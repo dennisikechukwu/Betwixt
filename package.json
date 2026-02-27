@@ -1,0 +1,27 @@
+{
+  "name": "betwixt",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "@heroicons/vue": "^2.2.0",
+    "@nuxt/fonts": "^0.14.0",
+    "@nuxtjs/color-mode": "^4.0.0",
+    "@nuxtjs/google-fonts": "^3.2.0",
+    "@tailwindcss/vite": "^4.2.0",
+    "chart.js": "^4.5.1",
+    "groq-sdk": "^0.37.0",
+    "nuxt": "^4.3.1",
+    "tailwindcss": "^4.2.0",
+    "vue": "^3.5.28",
+    "vue-chartjs": "^5.3.3",
+    "vue-router": "^4.6.4"
+  }
+}

@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+  --font-family-archivo: 'Archivo', sans-serif;
+}
+
+/* Remove all light mode defaults, force dark only */
+@layer base {
+  body {
+    @apply bg-gray-900 text-gray-100 antialiased;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-gray-800 rounded-lg shadow-lg overflow-hidden border border-gray-700 cursor-pointer font-family-archivo;
+  }
+}
+
+/* Custom animations */
+@keyframes priceFlash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.price-change {
+  animation: priceFlash 0.5s ease-in-out;
+}
