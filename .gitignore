@@ -19,10 +19,7 @@ logs
 .idea
 
 # Environment variables
-.env
-.env.*
 
 # Local env files
-.env
-.env.*
 !.env.example
+config.bat

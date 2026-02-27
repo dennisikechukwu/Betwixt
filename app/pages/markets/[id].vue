@@ -98,7 +98,7 @@ const { data, pending: fetchPending, error: fetchError } = await useAsyncData(
     
     return { market: marketData, history, book };
   },
-  { server: false }
+  { server: false, lazy: true }
 );
 
 // Update reactive state
@@ -268,9 +268,25 @@ const copyToClipboard = async (text: string) => {
       </div>
     </header>
 
+    <!-- Full-page loading spinner overlay -->
+    <Transition name="fade">
+      <div
+        v-if="pending"
+        class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-gray-900/90 backdrop-blur-sm"
+      >
+        <div class="relative">
+          <!-- Outer ring -->
+          <div class="w-16 h-16 rounded-full border-4 border-gray-700"></div>
+          <!-- Spinning arc -->
+          <div class="w-16 h-16 rounded-full border-4 border-transparent border-t-purple-500 border-r-blue-500 animate-spin absolute inset-0"></div>
+        </div>
+        <p class="mt-4 text-gray-400 text-sm tracking-wide animate-pulse">Loading market…</p>
+      </div>
+    </Transition>
+
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <!-- Loading State -->
-      <div v-if="pending" class="space-y-6">
+      <!-- Loading placeholder keeps layout stable while overlay is shown -->
+      <div v-if="pending" class="space-y-6 opacity-0">
         <MarketsMarketLoading />
       </div>
 
@@ -413,3 +429,14 @@ const copyToClipboard = async (text: string) => {
    
   </div>
 </template>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
